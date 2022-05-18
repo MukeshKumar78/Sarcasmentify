@@ -1,0 +1,11 @@
+POST http://0.0.0.0:5000/api/predict
+Content-Type: application/json
+
+{
+    "text": "hello"
+}
+
+
+###
+
+GET localhost:5000/api/predict

@@ -1,4 +1,5 @@
 import pickle
+from this import d
 import numpy as np
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 import tensorflow as tf
@@ -15,7 +16,7 @@ class LSTMClassifier:
 
         prediction = self.model.predict(testing_padded)
 
-        return [(p > 0.8)[0] for p in prediction]
+        return [np.array((p > 0.8), dtype=bool).tolist()[0] for p in prediction]
         
 class BERTClassifier:
     def __init__(self):

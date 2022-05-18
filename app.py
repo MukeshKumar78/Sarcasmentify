@@ -2,9 +2,7 @@ import os
 from flask import Flask, send_from_directory
 from flask_restful import Api
 from flask_cors import CORS #comment this on deployment
-from api.NewsApiHandler import NewsApiHandler
-from api.PredictionHandler import PredictionHandler
-from models import LSTMClassifier
+from api.PredictApiHandler import PredictApiHandler
 import gdown
 
 models = {
@@ -30,6 +28,5 @@ app.secret_key = "waowaowaowaowaowaowao"
 def serve(path):
     return send_from_directory(app.static_folder or '', 'index.html')
 
-api.add_resource(NewsApiHandler, '/api/news')
-api.add_resource(PredictionHandler, '/api/predict')
+api.add_resource(PredictApiHandler, '/api/predict')
 
