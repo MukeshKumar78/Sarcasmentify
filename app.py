@@ -21,7 +21,6 @@ app = Flask(__name__,
             static_folder = 'client/public' if env == 'dev' else 'client/build')
 CORS(app)
 api = Api(app)
-app.secret_key = "waowaowaowaowaowaowao"
 
 
 @app.route('/', defaults={'path':''})

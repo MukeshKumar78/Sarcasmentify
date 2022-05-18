@@ -1,6 +1,8 @@
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const loadingMessages = ["Predicting...", "Backpropagating", "Optimizing", "Checking dataset", "Calculating accuracy"];
@@ -11,6 +13,8 @@ function App() {
   const handleChange = (e) => {
     setInput(e.target.value);
   }
+
+  const notify = () => toast("Coming Soon!");
 
   const predict = () => {
     setOutputFlag(false);
@@ -47,13 +51,16 @@ function App() {
           </div>
         </div>
         <div className="Actions">
-          <span id="Result"> {output} </span>
+          <span id="Result" style={{color: output == 'Sarcastic' ? '#238823' : '#D2222D'}}> {output} </span>
         </div>
         <div className="Actions">
           <button onClick={predict}> Predict </button>
-          <button> Random </button>
+          <button onClick={notify}> Random </button>
         </div>
       </div>
+      <ToastContainer 
+      autoClose={1000}
+      hideProgressBar={true}/>
     </div>
   );
 }
